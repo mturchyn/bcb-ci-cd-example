@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mturchyn</groupId>
+	<artifactId>rpaentr</artifactId>
+	<version>0.0.2</version>
+	<packaging>jar</packaging>
+
+	<name>A custom Machine Config Bundle</name>
+
+	<properties>
+		<project.build.javaVersion>1.8</project.build.javaVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<workfusion.version>9.1.0.5</workfusion.version>
+		<mcb.repo.url>https://wfinst330-db1.workfusion.com/nexus/content/repositories/wf-machine-config-bundle/</mcb.repo.url>
+	</properties>
+
+
+	<distributionManagement>
+		<repository>
+			<!-- If need, specify repository access credentials in your maven configuration 
+				file 'setting.xml'. Manual: http://maven.apache.org/plugins/maven-deploy-plugin/usage.html -->
+			<id>mcb-repo</id>
+			<url>${mcb.repo.url}</url>
+		</repository>
+	</distributionManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.freedomoss.crowdcontrol</groupId>
+			<artifactId>workfusion-machine</artifactId>
+			<version>${workfusion.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${build.sourceDirectory}</directory>
+				<includes>
+					<include>**/*.groovy</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${project.build.javaVersion}</source>
+					<target>${project.build.javaVersion}</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+	<repositories>
+      <repository>
+	<id>workfusion-machine</id>
+    <url>https://wfinst330-db1.workfusion.com/nexus/content/repositories/local-mcb-repo</url>
+      </repository>
+    </repositories>
+	
+
+</project>
