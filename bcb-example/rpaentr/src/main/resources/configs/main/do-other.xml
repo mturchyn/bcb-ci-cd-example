@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config" scriptlang="groovy">
+
+    <include-config code="additional-config-1"/>
+    <include-config code="additional-config-2"/>
+
+    <export include-original-data="true"></export>
+
+</config>

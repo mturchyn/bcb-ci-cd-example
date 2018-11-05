@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://web-harvest.sourceforge.net/schema/1.0/config" scriptlang="groovy">
+
+    <var-def name="some_variable">hello world!</var-def>
+
+    <script><![CDATA[
+
+            import mturchyn.rpaentr.ExampleEntity;
+            import mturchyn.rpaentr.ExampleUtils;
+
+	        ExampleEntity entity = new ExampleEntity();
+	        entity.setExampleStringProperty(some_variable.toString());
+
+	        calcResult = ExampleUtils.multiply(2, 7);
+
+	]]></script>
+
+    <export include-original-data="true">
+        <single-column name="export_param_name" value="${some_variable.toString()}"/>
+        <single-column name="result" value="${calcResult}"/>
+    </export>
+
+</config>
